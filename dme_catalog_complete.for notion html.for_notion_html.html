@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DME Product Categories - Complete Catalog | Holistic Medical Supply</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .legend {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .legend h2 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .priority-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        
+        .priority-top {
+            background: #22c55e;
+            color: white;
+        }
+        
+        .priority-high {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .priority-medium {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .priority-low {
+            background: #94a3b8;
+            color: white;
+        }
+        
+        .priority-skip {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .status-certified {
+            background: #22c55e;
+            color: white;
+        }
+        
+        .status-missing {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-header {
+            background: #1e3c72;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px 10px 0 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .card-header.certified {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+        }
+        
+        .card-header.missing {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+        
+        .card-code {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .card-title {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .info-row {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .info-value {
+            color: #4b5563;
+            font-size: 14px;
+        }
+        
+        .personnel-box {
+            background: #fef3c7;
+            padding: 12px;
+            border-radius: 5px;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .personnel-box.none {
+            background: #d1fae5;
+            border-left-color: #22c55e;
+        }
+        
+        .demand-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .demand-bars {
+            display: flex;
+            gap: 3px;
+        }
+        
+        .demand-bar {
+            width: 8px;
+            height: 20px;
+            background: #e5e7eb;
+            border-radius: 2px;
+        }
+        
+        .demand-bar.filled {
+            background: #22c55e;
+        }
+        
+        .profit-box {
+            background: #dbeafe;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            color: #1e40af;
+        }
+        
+        .action-steps {
+            background: #f0fdf4;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #22c55e;
+        }
+        
+        .action-steps ul {
+            margin-left: 20px;
+        }
+        
+        .action-steps li {
+            margin-bottom: 8px;
+        }
+        
+        .quick-ref {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .quick-ref h2 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .comparison-table th {
+            background: #1e3c72;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f9fafb;
+        }
+        
+        .phase-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .phase-box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            border-top: 4px solid #3b82f6;
+        }
+        
+        .phase-box h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+        
+        .phase-box.phase-1 {
+            border-top-color: #22c55e;
+        }
+        
+        .phase-box.phase-2 {
+            border-top-color: #3b82f6;
+        }
+        
+        .phase-box.phase-3 {
+            border-top-color: #f59e0b;
+        }
+        
+        .key-vocab {
+            background: #fef3c7;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .vocab-item {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .vocab-en {
+            font-weight: bold;
+            color: #1e3c72;
+        }
+        
+        .vocab-ru {
+            color: #059669;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        .vocab-def {
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .warning-box h3 {
+            color: #dc2626;
+            margin-bottom: 10px;
+        }
+        
+        .success-box {
+            background: #d1fae5;
+            border-left: 4px solid #22c55e;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .success-box h3 {
+            color: #059669;
+            margin-bottom: 10px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .product-card {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏥 DME Product Categories Catalog</h1>
+        <p>Complete Reference Guide for Holistic Medical Supply Inc</p>
+        <p>BOC Accreditation #S72641 | Valid Through May 31, 2028</p>
+    </div>
+
+    <div class="container">
+        <!-- Legend Section -->
+        <div class="legend">
+            <h2>📖 How to Read This Catalog (Как читать этот каталог)</h2>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <span class="priority-badge priority-top">TOP PRIORITY</span>
+                    <span>Do FIRST - Highest profit & demand</span>
+                </div>
+                <div class="legend-item">
+                    <span class="priority-badge priority-high">HIGH VALUE</span>
+                    <span>Do SECOND - Good profit & demand</span>
+                </div>
+                <div class="legend-item">
+                    <span class="priority-badge priority-medium">CONSIDER</span>
+                    <span>Do THIRD - Moderate opportunity</span>
+                </div>
+                <div class="legend-item">
+                    <span class="priority-badge priority-low">LOW PRIORITY</span>
+                    <span>Wait - Small market or complex</span>
+                </div>
+                <div class="legend-item">
+                    <span class="priority-badge priority-skip">SKIP</span>
+                    <span>Too specialized - Don't add yet</span>
+                </div>
+                <div class="legend-item">
+                    <span class="priority-badge status-certified">CERTIFIED</span>
+                    <span>You already have this code</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Strategy Guide -->
+        <div class="quick-ref">
+            <h2>🎯 Your 3-Phase Strategy (Ваша стратегия в 3 этапа)</h2>
+            <div class="phase-timeline">
+                <div class="phase-box phase-1">
+                    <h3>📅 PHASE 1: THIS MONTH</h3>
+                    <p><strong>Add NOW (No personnel needed):</strong></p>
+                    <ul>
+                        <li>✅ DM09/DM10 - Hospital Beds</li>
+                        <li>✅ M02 - Patient Lifts</li>
+                        <li>✅ S02 - Diabetic Shoes (Non-Custom)</li>
+                        <li>✅ DM20/DM26 - Support Surfaces</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Investment:</strong> ~$15,000-$30,000 inventory</p>
+                    <p><strong>Potential Revenue:</strong> $100,000-$200,000/year</p>
+                </div>
+
+                <div class="phase-box phase-2">
+                    <h3>📅 PHASE 2: WITHIN 3 MONTHS</h3>
+                    <p><strong>Hire Respiratory Therapist/RN:</strong></p>
+                    <ul>
+                        <li>⭐ R08 - Oxygen Equipment (#1 DEMAND)</li>
+                        <li>⭐ R01 - CPAP Devices (HUGE MARKET)</li>
+                        <li>✅ R09 - Respiratory Assist Devices</li>
+                        <li>✅ R10 - Suction Pumps</li>
+                        <li>✅ DM15 - Wound Therapy Pumps</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Investment:</strong> $50,000-$70,000/year salary</p>
+                    <p><strong>Potential Revenue:</strong> $250,000-$500,000/year</p>
+                </div>
+
+                <div class="phase-box phase-3">
+                    <h3>📅 PHASE 3: WITHIN 6 MONTHS</h3>
+                    <p><strong>Contract with Orthotist/Pedorthist:</strong></p>
+                    <ul>
+                        <li>💰 OR01 - Custom Orthotics (HIGH MARGINS)</li>
+                        <li>💰 OR02 - Prefab Orthotics</li>
+                        <li>💰 S03 - Custom Diabetic Shoes</li>
+                        <li>✅ M03 - Power Scooters</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Investment:</strong> Contract or $60k-90k/year</p>
+                    <p><strong>Potential Revenue:</strong> $150,000-$300,000/year</p>
+                </div>
+            </div>
+
+            <div class="success-box" style="margin-top: 30px;">
+                <h3>💡 КЛЮЧЕВАЯ МЫСЛЬ (Key Insight):</h3>
+                <p><strong>One hire unlocks millions in revenue:</strong> Hiring just ONE Respiratory Therapist or Registered Nurse gives you access to 9 different product categories including the #1 and #2 most profitable ones (Oxygen and CPAP).</p>
+                <p style="margin-top: 10px;"><strong>ROI:</strong> $50,000 salary → $250,000-$500,000 revenue = 5-10x return on investment</p>
+            </div>
+        </div>
+
+        <!-- TOP PRIORITY SECTION -->
+        <div class="section">
+            <div class="section-header">⭐ TOP PRIORITY - DO THESE FIRST (Сделайте в первую очередь)</div>
+            <div class="product-grid">
+                
+                <!-- R08 - Oxygen -->
+                <div class="product-card">
+                    <div class="card-header missing">
+                        <div class="card-code">R08</div>
+                        <div class="card-title">Oxygen Equipment and Supplies</div>
+                        <div style="margin-top: 10px;">
+                            <span class="priority-badge priority-top">TOP PRIORITY</span>
+                            <span class="priority-badge status-missing">NOT CERTIFIED</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <div class="info-label">📊 Market Position (Позиция на рынке)</div>
+                            <div class="info-value"><strong>#1 MOST ORDERED DME</strong> - 34.4% of ALL orders in 2024</div>
+                            <div class="demand-indicator" style="margin-top: 8px;">
+                                <span>Demand:</span>
+                                <div class="demand-bars">
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                </div>
+                                <span><strong>VERY HIGH</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">👥 Personnel Required (Нужен персонал)</div>
+                            <div class="personnel-box">
+                                <strong>Required:</strong> Respiratory Therapist OR Registered Nurse<br>
+                                <strong>По-русски:</strong> Респираторный терапевт ИЛИ Дипломированная медсестра<br>
+                                <strong>Cost:</strong> $50,000-$70,000/year OR $30-50/hour contractor
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">💰 Profit Potential (Потенциальная прибыль)</div>
+                            <div class="profit-box">
+                                Profit Margin: 40-60%<br>
+                                Annual Revenue: $150,000-$300,000
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">🎯 Why Profitable? (Почему прибыльно?)</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Continuous demand (COPD, emphysema, long COVID patients)</li>
+                                <li>RECURRING REVENUE - rental equipment + monthly supplies</li>
+                                <li>36-month rental = steady income stream</li>
+                                <li>Medicare covers 80% after deductible</li>
+                                <li>After 36 months, you supply for FREE for 24 more months (but already profitable)</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">📋 What You Need (Что вам нужно)</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li><strong>Personnel:</strong> RT or RN on staff</li>
+                                <li><strong>Training:</strong> Oxygen safety, dosage, equipment maintenance</li>
+                                <li><strong>State License:</strong> Check if NY requires oxygen supplier license</li>
+                                <li><strong>Equipment:</strong> Oxygen concentrators, portable units, supplies</li>
+                                <li><strong>Suppliers:</strong> Contact oxygen equipment manufacturers</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">📝 Documentation Required</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Doctor prescription with flow rate</li>
+                                <li>Diagnosis (ICD-10 codes for COPD, etc.)</li>
+                                <li>Certificate of Medical Necessity (CMN)</li>
+                                <li>Proof of delivery</li>
+                                <li>Patient instruction records</li>
+                            </ul>
+                        </div>
+
+                        <div class="action-steps">
+                            <strong>🚀 Next Steps:</strong>
+                            <ol style="margin-left: 20px; margin-top: 10px;">
+                                <li>Post job for Respiratory Therapist (RT) or Registered Nurse (RN)</li>
+                                <li>Research oxygen equipment suppliers (Lincare, Apria, etc.)</li>
+                                <li>Contact BOC to start application for R08</li>
+                                <li>Update your facility space for oxygen storage</li>
+                                <li>Verify if NY requires special oxygen license</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- R01 - CPAP -->
+                <div class="product-card">
+                    <div class="card-header missing">
+                        <div class="card-code">R01</div>
+                        <div class="card-title">CPAP Devices (Sleep Apnea Equipment)</div>
+                        <div style="margin-top: 10px;">
+                            <span class="priority-badge priority-top">TOP PRIORITY</span>
+                            <span class="priority-badge status-missing">NOT CERTIFIED</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <div class="info-label">📊 Market Position</div>
+                            <div class="info-value"><strong>VERY HIGH DEMAND</strong> - Sleep apnea epidemic (millions undiagnosed)</div>
+                            <div class="demand-indicator" style="margin-top: 8px;">
+                                <span>Demand:</span>
+                                <div class="demand-bars">
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                </div>
+                                <span><strong>VERY HIGH</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">👥 Personnel Required</div>
+                            <div class="personnel-box">
+                                <strong>Required:</strong> Respiratory Therapist OR Registered Nurse<br>
+                                <strong>💡 SAME PERSON AS OXYGEN!</strong> One hire covers both R08 and R01<br>
+                                <strong>Cost:</strong> Already covered if you hired RT/RN for oxygen
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">💰 Profit Potential</div>
+                            <div class="profit-box">
+                                Profit Margin: 35-50%<br>
+                                Annual Revenue: $100,000-$200,000
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">🎯 Why Profitable?</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Growing market (obesity epidemic = more sleep apnea)</li>
+                                <li><strong>RECURRING SUPPLIES:</strong> Masks every 3 months, filters monthly, tubing every 6 months</li>
+                                <li>Equipment rental (13 months then patient owns)</li>
+                                <li>Strong insurance coverage</li>
+                                <li>High compliance requirement = regular contact with patients</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">📋 What You Need</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li><strong>Personnel:</strong> RT or RN (same as oxygen)</li>
+                                <li><strong>Training:</strong> CPAP fitting, mask selection, compliance monitoring</li>
+                                <li><strong>Equipment:</strong> Demo CPAP units, various mask types for fitting</li>
+                                <li><strong>Software:</strong> Compliance tracking software</li>
+                                <li><strong>Suppliers:</strong> ResMed, Philips Respironics, Fisher & Paykel</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">📝 Documentation Required</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Sleep study results (polysomnography)</li>
+                                <li>Doctor prescription with pressure settings</li>
+                                <li>Diagnosis (ICD-10: G47.33 = Obstructive sleep apnea)</li>
+                                <li>Mask fitting records</li>
+                                <li>Compliance data (must use 4+ hours per night for Medicare)</li>
+                            </ul>
+                        </div>
+
+                        <div class="action-steps">
+                            <strong>🚀 Next Steps:</strong>
+                            <ol style="margin-left: 20px; margin-top: 10px;">
+                                <li>Add R01 to BOC application at SAME TIME as R08</li>
+                                <li>Contact CPAP equipment suppliers</li>
+                                <li>Purchase demo units for patient fitting</li>
+                                <li>Set up compliance tracking system</li>
+                                <li>Create patient education materials</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DM09 - Hospital Beds Electric -->
+                <div class="product-card">
+                    <div class="card-header missing">
+                        <div class="card-code">DM09</div>
+                        <div class="card-title">Hospital Beds - Electric</div>
+                        <div style="margin-top: 10px;">
+                            <span class="priority-badge priority-top">TOP PRIORITY</span>
+                            <span class="priority-badge status-missing">NOT CERTIFIED</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <div class="info-label">📊 Market Position</div>
+                            <div class="info-value"><strong>HIGH DEMAND</strong> - Aging population, post-surgery recovery</div>
+                            <div class="demand-indicator" style="margin-top: 8px;">
+                                <span>Demand:</span>
+                                <div class="demand-bars">
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar"></div>
+                                </div>
+                                <span><strong>HIGH</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">👥 Personnel Required</div>
+                            <div class="personnel-box none">
+                                <strong>✅ NO SPECIAL PERSONNEL REQUIRED!</strong><br>
+                                <strong>You can start THIS NOW!</strong><br>
+                                Only need delivery team trained on assembly/safety
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">💰 Profit Potential</div>
+                            <div class="profit-box">
+                                Profit Margin: 30-45%<br>
+                                Annual Revenue: $50,000-$100,000
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">🎯 Why Profitable?</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li><strong>HIGH TICKET:</strong> $1,500-$5,000 per unit</li>
+                                <li>Long rental periods (13 months)</li>
+                                <li>Medicare covers if medically necessary for positioning</li>
+                                <li>Accessories sales: mattresses, rails, trapeze bars</li>
+                                <li>Low competition in local market</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">📋 What You Need</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li><strong>Personnel:</strong> NONE! Just delivery team</li>
+                                <li><strong>Training:</strong> Assembly, positioning, safety features</li>
+                                <li><strong>Physical Space:</strong> Warehouse storage for beds</li>
+                                <li><strong>Delivery:</strong> Truck + 2-person team</li>
+                                <li><strong>Suppliers:</strong> Invacare, Drive Medical, Medline</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">📝 Documentation Required</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Doctor prescription stating need for positioning</li>
+                                <li>Diagnosis explaining why standard bed insufficient</li>
+                                <li>Certificate of Medical Necessity (CMN) - Form 484.2</li>
+                                <li>Delivery ticket with patient signature</li>
+                                <li>Patient instruction on bed operation</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">💵 Medicare Reimbursement</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li><strong>Rental:</strong> Medicare pays 80% monthly for 13 months</li>
+                                <li><strong>After 13 months:</strong> Patient owns bed, payments stop</li>
+                                <li><strong>Typical rates:</strong> $150-300/month rental</li>
+                            </ul>
+                        </div>
+
+                        <div class="action-steps">
+                            <strong>🚀 Next Steps (DO THIS NOW):</strong>
+                            <ol style="margin-left: 20px; margin-top: 10px;">
+                                <li><strong>TODAY:</strong> Contact BOC to add DM09 to your accreditation</li>
+                                <li>Contact hospital bed suppliers for pricing</li>
+                                <li>Train your delivery team on assembly</li>
+                                <li>Create storage space in warehouse</li>
+                                <li>Order 2-3 demo beds to start</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DM10 - Hospital Beds Manual -->
+                <div class="product-card">
+                    <div class="card-header missing">
+                        <div class="card-code">DM10</div>
+                        <div class="card-title">Hospital Beds - Manual</div>
+                        <div style="margin-top: 10px;">
+                            <span class="priority-badge priority-top">TOP PRIORITY</span>
+                            <span class="priority-badge status-missing">NOT CERTIFIED</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <div class="info-label">📊 Market Position</div>
+                            <div class="info-value"><strong>GOOD DEMAND</strong> - Lower cost alternative to electric</div>
+                            <div class="demand-indicator" style="margin-top: 8px;">
+                                <span>Demand:</span>
+                                <div class="demand-bars">
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar"></div>
+                                    <div class="demand-bar"></div>
+                                </div>
+                                <span><strong>GOOD</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">👥 Personnel Required</div>
+                            <div class="personnel-box none">
+                                <strong>✅ NO SPECIAL PERSONNEL REQUIRED!</strong><br>
+                                <strong>Same as DM09 - You can start NOW!</strong>
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">💰 Profit Potential</div>
+                            <div class="profit-box">
+                                Profit Margin: 30-45%<br>
+                                Annual Revenue: $30,000-$60,000
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">🎯 Why Add This?</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Lower cost option for budget-conscious patients</li>
+                                <li>Easier to handle/deliver than electric</li>
+                                <li>Some Medicare advantage plans prefer manual</li>
+                                <li><strong>Add at SAME TIME as DM09</strong> - minimal extra work</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">📋 What You Need</div>
+                            <div class="info-value">SAME as DM09 - No additional requirements!</div>
+                        </div>
+
+                        <div class="action-steps">
+                            <strong>🚀 Next Steps:</strong>
+                            <ol style="margin-left: 20px; margin-top: 10px;">
+                                <li>Add DM10 to BOC application WITH DM09</li>
+                                <li>Order 1-2 manual beds alongside electric ones</li>
+                                <li>Same training, same processes as electric beds</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- HIGH VALUE SECTION -->
+        <div class="section">
+            <div class="section-header">💎 HIGH VALUE - Do These Second (Сделайте во вторую очередь)</div>
+            <div class="product-grid">
+
+                <!-- S02 - Diabetic Shoes Non-Custom -->
+                <div class="product-card">
+                    <div class="card-header missing">
+                        <div class="card-code">S02</div>
+                        <div class="card-title">Diabetic Shoes/Inserts - Non-Custom</div>
+                        <div style="margin-top: 10px;">
+                            <span class="priority-badge priority-high">HIGH VALUE</span>
+                            <span class="priority-badge status-missing">NOT CERTIFIED</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <div class="info-label">📊 Market Position</div>
+                            <div class="info-value"><strong>STEADY DEMAND</strong> - Large diabetic population</div>
+                            <div class="demand-indicator" style="margin-top: 8px;">
+                                <span>Demand:</span>
+                                <div class="demand-bars">
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar"></div>
+                                </div>
+                                <span><strong>HIGH</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">👥 Personnel Required</div>
+                            <div class="personnel-box none">
+                                <strong>✅ Product Specific Training ONLY!</strong><br>
+                                No special license required<br>
+                                You can train existing staff
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">💰 Profit Potential</div>
+                            <div class="profit-box">
+                                Profit Margin: 50-70% (VERY HIGH!)<br>
+                                Annual Revenue: $40,000-$80,000
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">🎯 Why Profitable?</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li><strong>VERY HIGH MARGINS:</strong> 200-400% markup possible</li>
+                                <li>Medicare covers 1 pair + 3 inserts per year for qualified diabetics</li>
+                                <li>REPEAT CUSTOMERS yearly</li>
+                                <li>Cash sales to non-Medicare patients</li>
+                                <li>Low inventory cost</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">📋 What You Need</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li><strong>Personnel:</strong> Product training only (no license)</li>
+                                <li><strong>Training:</strong> Diabetic foot conditions, proper fitting, documentation</li>
+                                <li><strong>Inventory:</strong> Stock various sizes and widths</li>
+                                <li><strong>Space:</strong> Small fitting area</li>
+                                <li><strong>Suppliers:</strong> Dr. Comfort, Orthofeet, Apex</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">📝 Medicare Coverage</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Patient must have diabetes + one of: nerve damage, circulation problems, foot deformity, history of amputation, previous foot ulcer, or callus formation</li>
+                                <li>Prescription from treating physician (MD or DO)</li>
+                                <li><strong>Reimbursement:</strong> ~$150-200 per pair (Medicare pays 80%)</li>
+                                <li>Can bill 1 pair + 3 inserts per calendar year</li>
+                            </ul>
+                        </div>
+
+                        <div class="action-steps">
+                            <strong>🚀 Next Steps:</strong>
+                            <ol style="margin-left: 20px; margin-top: 10px;">
+                                <li>Contact diabetic shoe suppliers for training</li>
+                                <li>Order starter inventory (sizes 6-12, various widths)</li>
+                                <li>Add S02 to BOC application</li>
+                                <li>Market to podiatrists and endocrinologists</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- M02 - Patient Lifts -->
+                <div class="product-card">
+                    <div class="card-header missing">
+                        <div class="card-code">M02</div>
+                        <div class="card-title">Patient Lifts</div>
+                        <div style="margin-top: 10px;">
+                            <span class="priority-badge priority-high">HIGH VALUE</span>
+                            <span class="priority-badge status-missing">NOT CERTIFIED</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <div class="info-label">📊 Market Position</div>
+                            <div class="info-value"><strong>GOOD DEMAND</strong> - Caregivers, nursing homes, home care</div>
+                            <div class="demand-indicator" style="margin-top: 8px;">
+                                <span>Demand:</span>
+                                <div class="demand-bars">
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar"></div>
+                                    <div class="demand-bar"></div>
+                                </div>
+                                <span><strong>GOOD</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">👥 Personnel Required</div>
+                            <div class="personnel-box none">
+                                <strong>✅ NO SPECIAL PERSONNEL REQUIRED!</strong><br>
+                                Training on safe operation only
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">💰 Profit Potential</div>
+                            <div class="profit-box">
+                                Profit Margin: 35-50%<br>
+                                Annual Revenue: $30,000-$60,000
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">🎯 Why Add This?</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Prevents caregiver back injuries</li>
+                                <li>Required by many nursing facilities</li>
+                                <li>Medicare covers for home use</li>
+                                <li>Rental or purchase options</li>
+                                <li>Complements hospital bed sales</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">📋 What You Need</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li><strong>Training:</strong> Safe operation, weight limits, transfer techniques</li>
+                                <li><strong>Delivery:</strong> Heavy equipment delivery capability</li>
+                                <li><strong>Types:</strong> Manual lifts, electric lifts, ceiling-mounted</li>
+                                <li><strong>Suppliers:</strong> Hoyer, Invacare, Drive Medical</li>
+                            </ul>
+                        </div>
+
+                        <div class="action-steps">
+                            <strong>🚀 Next Steps:</strong>
+                            <ol style="margin-left: 20px; margin-top: 10px;">
+                                <li>Add M02 to BOC application with hospital beds</li>
+                                <li>Train delivery team on safe setup</li>
+                                <li>Order 1-2 lifts for inventory</li>
+                                <li>Market to home care agencies</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OR03 - Off-The-Shelf Orthotics (already certified) -->
+                <div class="product-card">
+                    <div class="card-header certified">
+                        <div class="card-code">OR03</div>
+                        <div class="card-title">Orthoses: Off-The-Shelf</div>
+                        <div style="margin-top: 10px;">
+                            <span class="priority-badge priority-high">HIGH VALUE</span>
+                            <span class="priority-badge status-certified">✅ YOU HAVE THIS</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <div class="info-label">📊 Market Position</div>
+                            <div class="info-value"><strong>VERY COMMON</strong> - Knee braces, ankle braces, back supports</div>
+                            <div class="demand-indicator" style="margin-top: 8px;">
+                                <span>Demand:</span>
+                                <div class="demand-bars">
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar filled"></div>
+                                    <div class="demand-bar"></div>
+                                </div>
+                                <span><strong>HIGH</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">👥 Personnel Required</div>
+                            <div class="personnel-box none">
+                                <strong>✅ NO SPECIAL PERSONNEL REQUIRED!</strong><br>
+                                You already have this code
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">💰 Profit Potential</div>
+                            <div class="profit-box">
+                                Profit Margin: 40-60%<br>
+                                Annual Revenue: $50,000-$100,000
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-label">🎯 Products in This Category</div>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Knee braces (arthritis, post-surgery)</li>
+                                <li>Ankle braces (sprains, support)</li>
+                                <li>Wrist braces (carpal tunnel)</li>
+                                <li>Back supports (lumbar belts)</li>
+                                <li>Elbow braces (tennis elbow)</li>
+                                <li>Cervical collars (neck support)</li>
+                            </ul>
+                        </div>
+
+                        <div class="success-box">
+                            <strong>✅ YOU'RE ALREADY DOING THIS!</strong><br>
+                            Focus on expanding your inventory and marketing to more physicians.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Summary Table of All Missing Codes -->
+        <div class="quick-ref">
+            <h2>📊 Complete Missing Codes Summary (Все коды, которых у вас нет)</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Category Name</th>
+                        <th>Priority</th>
+                        <th>Personnel Needed</th>
+                        <th>Profit Margin</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- RESPIRATORY - Require RT/RN -->
+                    <tr style="background: #fef3c7;">
+                        <td colspan="6" style="font-weight: bold; color: #92400e;">RESPIRATORY EQUIPMENT - All require Respiratory Therapist or Registered Nurse</td>
+                    </tr>
+                    <tr>
+                        <td><strong>R08</strong></td>
+                        <td>Oxygen Equipment/Supplies</td>
+                        <td><span class="priority-badge priority-top">TOP</span></td>
+                        <td>RT or RN</td>
+                        <td>40-60%</td>
+                        <td>DO FIRST - #1 DEMAND</td>
+                    </tr>
+                    <tr>
+                        <td><strong>R01</strong></td>
+                        <td>CPAP Devices</td>
+                        <td><span class="priority-badge priority-top">TOP</span></td>
+                        <td>RT or RN</td>
+                        <td>35-50%</td>
+                        <td>DO FIRST - Same RT</td>
+                    </tr>
+                    <tr>
+                        <td><strong>R09</strong></td>
+                        <td>Respiratory Assist Devices</td>
+                        <td><span class="priority-badge priority-high">HIGH</span></td>
+                        <td>RT or RN</td>
+                        <td>35-50%</td>
+                        <td>Add with oxygen/CPAP</td>
+                    </tr>
+                    <tr>
+                        <td><strong>R10</strong></td>
+                        <td>Respiratory Suction Pumps</td>
+                        <td><span class="priority-badge priority-medium">MEDIUM</span></td>
+                        <td>RT or RN</td>
+                        <td>40-55%</td>
+                        <td>Add with oxygen/CPAP</td>
+                    </tr>
+                    <tr>
+                        <td><strong>R02</strong></td>
+                        <td>High Frequency Chest Wall Oscillation</td>
+                        <td><span class="priority-badge priority-medium">MEDIUM</span></td>
+                        <td>RT or RN</td>
+                        <td>30-45%</td>
+                        <td>Specialized market</td>
+                    </tr>
+                    <tr>
+                        <td><strong>R04</strong></td>
+                        <td>IPPB Devices</td>
+                        <td><span class="priority-badge priority-low">LOW</span></td>
+                        <td>RT or RN</td>
+                        <td>30-40%</td>
+                        <td>Small market</td>
+                    </tr>
+                    <tr>
+                        <td><strong>R05</strong></td>
+                        <td>Intrapulmonary Percussive Ventilation</td>
+                        <td><span class="priority-badge priority-low">LOW</span></td>
+                        <td>RT or RN</td>
+                        <td>30-40%</td>
+                        <td>Very specialized</td>
+                    </tr>
+                    <tr>
+                        <td><strong>R06</strong></td>
+                        <td>Mechanical In-Exsufflation</td>
+                        <td><span class="priority-badge priority-low">LOW</span></td>
+                        <td>RT or RN</td>
+                        <td>35-45%</td>
+                        <td>Neuromuscular patients</td>
+                    </tr>
+                    <tr>
+                        <td><strong>R12</strong></td>
+                        <td>Ventilators (not CPAP/RAD)</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>RT or RN</td>
+                        <td>25-35%</td>
+                        <td>Too risky - skip</td>
+                    </tr>
+
+                    <!-- HOSPITAL BEDS & MOBILITY -->
+                    <tr style="background: #dbeafe;">
+                        <td colspan="6" style="font-weight: bold; color: #1e40af;">BEDS & MOBILITY - No special personnel required</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DM09</strong></td>
+                        <td>Hospital Beds - Electric</td>
+                        <td><span class="priority-badge priority-top">TOP</span></td>
+                        <td>None</td>
+                        <td>30-45%</td>
+                        <td>START NOW!</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DM10</strong></td>
+                        <td>Hospital Beds - Manual</td>
+                        <td><span class="priority-badge priority-top">TOP</span></td>
+                        <td>None</td>
+                        <td>30-45%</td>
+                        <td>START NOW!</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M02</strong></td>
+                        <td>Patient Lifts</td>
+                        <td><span class="priority-badge priority-high">HIGH</span></td>
+                        <td>None</td>
+                        <td>35-50%</td>
+                        <td>Add with beds</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M03</strong></td>
+                        <td>Power Scooters</td>
+                        <td><span class="priority-badge priority-high">HIGH</span></td>
+                        <td>None</td>
+                        <td>25-40%</td>
+                        <td>Need showroom space</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M04</strong></td>
+                        <td>Seat Lift Mechanisms</td>
+                        <td><span class="priority-badge priority-medium">MEDIUM</span></td>
+                        <td>None</td>
+                        <td>30-45%</td>
+                        <td>Often part of lift chairs</td>
+                    </tr>
+
+                    <!-- DIABETIC SHOES -->
+                    <tr style="background: #fce7f3;">
+                        <td colspan="6" style="font-weight: bold; color: #9f1239;">DIABETIC SHOES & INSERTS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>S02</strong></td>
+                        <td>Diabetic Shoes - Non-Custom</td>
+                        <td><span class="priority-badge priority-high">HIGH</span></td>
+                        <td>Product Training</td>
+                        <td>50-70%</td>
+                        <td>High margins!</td>
+                    </tr>
+                    <tr>
+                        <td><strong>S03</strong></td>
+                        <td>Diabetic Shoes - Custom</td>
+                        <td><span class="priority-badge priority-high">HIGH</span></td>
+                        <td>Orthotist/Prosthetist/Pedorthist</td>
+                        <td>50-70%</td>
+                        <td>Need licensed professional</td>
+                    </tr>
+
+                    <!-- ORTHOTICS -->
+                    <tr style="background: #e0e7ff;">
+                        <td colspan="6" style="font-weight: bold; color: #3730a3;">ORTHOTICS (BRACES)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OR01</strong></td>
+                        <td>Custom Fabricated Orthoses</td>
+                        <td><span class="priority-badge priority-high">HIGH</span></td>
+                        <td>Orthotist or Pedorthist</td>
+                        <td>40-65%</td>
+                        <td>High value - need license</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OR02</strong></td>
+                        <td>Prefabricated Custom Fitted Orthoses</td>
+                        <td><span class="priority-badge priority-high">HIGH</span></td>
+                        <td>Orthotist/Fitter/Pedorthist</td>
+                        <td>40-60%</td>
+                        <td>Need certified fitter</td>
+                    </tr>
+
+                    <!-- OTHER DME -->
+                    <tr style="background: #f3f4f6;">
+                        <td colspan="6" style="font-weight: bold; color: #374151;">OTHER DURABLE MEDICAL EQUIPMENT</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DM01</strong></td>
+                        <td>Automatic External Defibrillators (AEDs)</td>
+                        <td><span class="priority-badge priority-medium">MEDIUM</span></td>
+                        <td>CPR Training</td>
+                        <td>30-45%</td>
+                        <td>High cost, niche market</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DM03</strong></td>
+                        <td>Continuous Passive Motion (CPM) Devices</td>
+                        <td><span class="priority-badge priority-medium">MEDIUM</span></td>
+                        <td>Product Training</td>
+                        <td>30-45%</td>
+                        <td>Post-surgical rentals</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DM04</strong></td>
+                        <td>Contracture Treatment: Dynamic Splint</td>
+                        <td><span class="priority-badge priority-medium">MEDIUM</span></td>
+                        <td>Orthotist/PT/OT</td>
+                        <td>35-50%</td>
+                        <td>Rehabilitation market</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DM07</strong></td>
+                        <td>Gastric Suction Pumps</td>
+                        <td><span class="priority-badge priority-low">LOW</span></td>
+                        <td>Registered Nurse</td>
+                        <td>30-40%</td>
+                        <td>Small market</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DM15</strong></td>
+                        <td>Negative Pressure Wound Therapy</td>
+                        <td><span class="priority-badge priority-medium">MEDIUM</span></td>
+                        <td>Registered Nurse</td>
+                        <td>35-50%</td>
+                        <td>Wound care market</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DM19</strong></td>
+                        <td>Speech Generating Devices</td>
+                        <td><span class="priority-badge priority-low">LOW</span></td>
+                        <td>None</td>
+                        <td>25-35%</td>
+                        <td>Very specialized, high cost</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DM20</strong></td>
+                        <td>Support Surfaces - NEW</td>
+                        <td><span class="priority-badge priority-medium">MEDIUM</span></td>
+                        <td>None</td>
+                        <td>30-45%</td>
+                        <td>Wound care, nursing homes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DM23</strong></td>
+                        <td>Ultraviolet Light Devices</td>
+                        <td><span class="priority-badge priority-low">LOW</span></td>
+                        <td>Product Training</td>
+                        <td>35-50%</td>
+                        <td>Psoriasis treatment</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DM26</strong></td>
+                        <td>Support Surfaces - USED</td>
+                        <td><span class="priority-badge priority-medium">MEDIUM</span></td>
+                        <td>None</td>
+                        <td>40-60%</td>
+                        <td>Good margins on used</td>
+                    </tr>
+
+                    <!-- COMPLEX WHEELCHAIRS - SKIP -->
+                    <tr style="background: #fee2e2;">
+                        <td colspan="6" style="font-weight: bold; color: #991b1b;">COMPLEX WHEELCHAIRS - SKIP FOR NOW (Require RESNA Certification)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M08</strong></td>
+                        <td>Complex Rehab Manual Wheelchairs</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>RESNA Certified</td>
+                        <td>25-35%</td>
+                        <td>Too specialized - skip</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M08A</strong></td>
+                        <td>Complex Rehab Manual Accessories</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>RESNA Certified</td>
+                        <td>25-35%</td>
+                        <td>Too specialized - skip</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M09</strong></td>
+                        <td>Complex Rehab Power Wheelchairs</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>RESNA Certified</td>
+                        <td>20-30%</td>
+                        <td>Too specialized - skip</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M09A</strong></td>
+                        <td>Complex Rehab Power Accessories</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>RESNA Certified</td>
+                        <td>20-30%</td>
+                        <td>Too specialized - skip</td>
+                    </tr>
+
+                    <!-- PROSTHETICS & DEVICES - SKIP MOST -->
+                    <tr style="background: #fee2e2;">
+                        <td colspan="6" style="font-weight: bold; color: #991b1b;">PROSTHETICS & SPECIALIZED DEVICES - Most Too Specialized</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PD01</strong></td>
+                        <td>Breast Prostheses</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>Mastectomy Fitter</td>
+                        <td>40-55%</td>
+                        <td>Very specialized</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PD02</strong></td>
+                        <td>Cochlear Implants</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>Audiologist</td>
+                        <td>N/A</td>
+                        <td>Surgical - skip</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PD03</strong></td>
+                        <td>Facial Prostheses</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>Anaplastologist</td>
+                        <td>N/A</td>
+                        <td>Too specialized</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PD05</strong></td>
+                        <td>Ocular Prostheses</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>Ocularist</td>
+                        <td>N/A</td>
+                        <td>Too specialized</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PD06</strong></td>
+                        <td>Ostomy Supplies</td>
+                        <td><span class="priority-badge priority-medium">MEDIUM</span></td>
+                        <td>None</td>
+                        <td>35-50%</td>
+                        <td>Recurring supplies - mail-order competition</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PD07</strong></td>
+                        <td>Somatic Prostheses</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>Prosthetist</td>
+                        <td>N/A</td>
+                        <td>Too specialized</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PD10</strong></td>
+                        <td>Voice Prosthetics</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>None</td>
+                        <td>30-40%</td>
+                        <td>Very small market</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PD11</strong></td>
+                        <td>Conventional Eyeglasses</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>Optician</td>
+                        <td>40-60%</td>
+                        <td>Different business model</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PD12</strong></td>
+                        <td>Conventional Contact Lenses</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>Optician</td>
+                        <td>40-60%</td>
+                        <td>Different business model</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PD13</strong></td>
+                        <td>Prosthetic Cataract Lenses</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>Optician</td>
+                        <td>N/A</td>
+                        <td>Surgical - skip</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PR01</strong></td>
+                        <td>Limb Prostheses</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>Prosthetist</td>
+                        <td>25-35%</td>
+                        <td>Highly specialized field</td>
+                    </tr>
+
+                    <!-- ENTERAL/PARENTERAL - SKIP -->
+                    <tr style="background: #fee2e2;">
+                        <td colspan="6" style="font-weight: bold; color: #991b1b;">ENTERAL/PARENTERAL NUTRITION - Skip (High Liability)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PE05</strong></td>
+                        <td>Parenteral Nutrients</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>Product Training</td>
+                        <td>25-35%</td>
+                        <td>Complex regulations - skip</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PE06</strong></td>
+                        <td>Parenteral Equipment/Supplies</td>
+                        <td><span class="priority-badge priority-skip">SKIP</span></td>
+                        <td>Product Training</td>
+                        <td>25-35%</td>
+                        <td>High liability - skip</td>
+                    </tr>
+
+                    <!-- OTHER PENILE/SPECIAL -->
+                    <tr style="background: #f3f4f6;">
+                        <td colspan="6" style="font-weight: bold; color: #374151;">OTHER SPECIALIZED ITEMS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OR04</strong></td>
+                        <td>Penile Pumps</td>
+                        <td><span class="priority-badge priority-low">LOW</span></td>
+                        <td>None</td>
+                        <td>40-60%</td>
+                        <td>Sensitive market</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- KEY VOCABULARY -->
+        <div class="quick-ref">
+            <h2>🎓 Key Vocabulary (Ключевые термины)</h2>
+            <div class="vocab-grid">
+                <div class="vocab-item">
+                    <div class="vocab-en">Respiratory Therapist (RT)</div>
+                    <div class="vocab-ru">Респираторный терапевт</div>
+                    <div class="vocab-def">Licensed specialist for breathing equipment and respiratory conditions</div>
+                </div>
+                <div class="vocab-item">
+                    <div class="vocab-en">Registered Nurse (RN)</div>
+                    <div class="vocab-ru">Дипломированная медсестра</div>
+                    <div class="vocab-def">Licensed nurse with advanced training and credentials</div>
+                </div>
+                <div class="vocab-item">
+                    <div class="vocab-en">Orthotist</div>
+                    <div class="vocab-ru">Ортопед-техник</div>
+                    <div class="vocab-def">Specialist who designs, fabricates, and fits braces and orthotic devices</div>
+                </div>
+                <div class="vocab-item">
+                    <div class="vocab-en">Pedorthist</div>
+                    <div class="vocab-ru">Педортопед</div>
+                    <div class="vocab-def">Specialist in foot orthotics and therapeutic footwear</div>
+                </div>
+                <div class="vocab-item">
+                    <div class="vocab-en">Prosthetist</div>
+                    <div class="vocab-ru">Протезист</div>
+                    <div class="vocab-def">Specialist who makes and fits artificial limbs and body parts</div>
+                </div>
+                <div class="vocab-item">
+                    <div class="vocab-en">Certificate of Medical Necessity (CMN)</div>
+                    <div class="vocab-ru">Сертификат медицинской необходимости</div>
+                    <div class="vocab-def">Required form proving patient needs specific equipment</div>
+                </div>
+                <div class="vocab-item">
+                    <div class="vocab-en">Face-to-Face Evaluation</div>
+                    <div class="vocab-ru">Личный осмотр врачом</div>
+                    <div class="vocab-def">Doctor must examine patient in person before ordering equipment</div>
+                </div>
+                <div class="vocab-item">
+                    <div class="vocab-en">Accreditation</div>
+                    <div class="vocab-ru">Аккредитация</div>
+                    <div class="vocab-def">Official approval to provide specific products/services</div>
+                </div>
+                <div class="vocab-item">
+                    <div class="vocab-en">Profit Margin</div>
+                    <div class="vocab-ru">Маржа прибыли</div>
+                    <div class="vocab-def">Percentage of profit after costs (higher = more profitable)</div>
+                </div>
+                <div class="vocab-item">
+                    <div class="vocab-en">Reimbursement</div>
+                    <div class="vocab-ru">Возмещение расходов</div>
+                    <div class="vocab-def">Payment from insurance to supplier for equipment</div>
+                </div>
+                <div class="vocab-item">
+                    <div class="vocab-en">Prior Authorization</div>
+                    <div class="vocab-ru">Предварительное одобрение</div>
+                    <div class="vocab-def">Insurance approval needed BEFORE supplying equipment</div>
+                </div>
+                <div class="vocab-item">
+                    <div class="vocab-en">Capped Rental</div>
+                    <div class="vocab-ru">Аренда с лимитом</div>
+                    <div class="vocab-def">Medicare pays rent for 13 months, then patient owns equipment</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HOW TO ADD CATEGORIES -->
+        <div class="quick-ref">
+            <h2>📝 How to Add Product Categories (Как добавить категории)</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px;">
+                <div>
+                    <h3 style="color: #1e3c72; margin-bottom: 15px;">Step-by-Step Process (Пошаговый процесс)</h3>
+                    <ol style="margin-left: 20px; line-height: 2;">
+                        <li><strong>Download Application:</strong> Get "Addition of Product Categories Application" from BOC</li>
+                        <li><strong>Gather Documents:</strong> Personnel credentials, inventory list, policies/procedures</li>
+                        <li><strong>Take Photos:</strong> Your facility, storage areas, fitting rooms</li>
+                        <li><strong>Submit Application:</strong> Mail or email to BOC with fee ($500-$1,500)</li>
+                        <li><strong>Schedule Survey:</strong> BOC will inspect your facility (60-90 days)</li>
+                        <li><strong>Get Approved:</strong> Receive updated accreditation certificate</li>
+                        <li><strong>Update Medicare:</strong> Notify Medicare of new product categories</li>
+                    </ol>
+                </div>
+
+                <div>
+                    <h3 style="color: #1e3c72; margin-bottom: 15px;">Required Documents (Необходимые документы)</h3>
+                    <ul style="margin-left: 20px; line-height: 2;">
+                        <li>Personnel licenses/certifications</li>
+                        <li>Employment contracts or resumes</li>
+                        <li>Product inventory list with HCPCS codes</li>
+                        <li>Supplier/manufacturer contracts</li>
+                        <li>Delivery procedures documentation</li>
+                        <li>Patient instruction protocols</li>
+                        <li>Storage and maintenance procedures</li>
+                        <li>Insurance certificates</li>
+                        <li>Photos of facility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 25px; background: #dbeafe; border-radius: 10px; border-left: 5px solid #3b82f6;">
+                <h3 style="color: #1e40af; margin-bottom: 15px;">💡 PRO TIP: Add Multiple Categories at Once</h3>
+                <p style="margin-bottom: 10px;">You can add several categories in ONE application to save time and money:</p>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Hospital Package:</strong> DM09 + DM10 + M02 (beds + lifts) - Same application, no extra personnel</li>
+                    <li><strong>Respiratory Package:</strong> R08 + R01 + R09 + R10 (oxygen + CPAP + assist + suction) - Same RT covers all</li>
+                    <li><strong>Orthotic Package:</strong> OR01 + OR02 + S03 (custom + prefab + shoes) - Same orthotist covers all</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 20px; padding: 20px; background: #d1fae5; border-radius: 10px;">
+                <h3 style="color: #059669;">📞 BOC Contact Information</h3>
+                <p style="margin: 10px 0;"><strong>Email:</strong> fa@bocusa.org</p>
+                <p style="margin: 10px 0;"><strong>Phone:</strong> 877.776.2200 (toll-free)</p>
+                <p style="margin: 10px 0;"><strong>Local:</strong> 410.581.6222</p>
+                <p style="margin: 10px 0;"><strong>Website:</strong> www.bocusa.org/accreditation</p>
+            </div>
+        </div>
+
+        <!-- FINANCIAL PROJECTION -->
+        <div class="quick-ref">
+            <h2>💵 Financial Projection (Финансовый прогноз)</h2>
+            
+            <h3 style="color: #1e3c72; margin-top: 20px; margin-bottom: 15px;">Investment Required by Phase</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>Categories to Add</th>
+                        <th>Investment</th>
+                        <th>Timeline</th>
+                        <th>Revenue Potential (Year 1)</th>
+                        <th>ROI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Phase 1</strong></td>
+                        <td>DM09, DM10, M02, S02, DM20, DM26</td>
+                        <td>$15,000-$30,000<br>(inventory only)</td>
+                        <td>1 month</td>
+                        <td>$100,000-$200,000</td>
+                        <td><strong>500-1000%</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phase 2</strong></td>
+                        <td>R08, R01, R09, R10, DM15</td>
+                        <td>$50,000-$70,000/year<br>(RT/RN salary)<br>+ $20,000 inventory</td>
+                        <td>3 months</td>
+                        <td>$250,000-$500,000</td>
+                        <td><strong>350-700%</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phase 3</strong></td>
+                        <td>OR01, OR02, S03, M03</td>
+                        <td>$60,000-$90,000/year<br>(Orthotist)<br>OR 50% revenue share</td>
+                        <td>6 months</td>
+                        <td>$150,000-$300,000</td>
+                        <td><strong>250-500%</strong></td>
+                    </tr>
+                    <tr style="background: #d1fae5; font-weight: bold;">
+                        <td><strong>TOTAL</strong></td>
+                        <td><strong>15 new categories</strong></td>
+                        <td><strong>$145,000-$210,000</strong><br>(first year)</td>
+                        <td><strong>6 months</strong></td>
+                        <td><strong>$500,000-$1,000,000</strong></td>
+                        <td><strong>350-700%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="margin-top: 30px; padding: 25px; background: #fef3c7; border-radius: 10px;">
+                <h3 style="color: #92400e; margin-bottom: 15px;">⚠️ IMPORTANT NOTES (Важные примечания)</h3>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>These are ESTIMATES:</strong> Actual results depend on your marketing, location, competition, and execution</li>
+                    <li><strong>Revenue ≠ Profit:</strong> Margins listed earlier show profit after costs</li>
+                    <li><strong>Ramp-up Time:</strong> Takes 3-6 months to build patient base for each category</li>
+                    <li><strong>Recurring Revenue:</strong> Oxygen and CPAP supplies create steady monthly income</li>
+                    <li><strong>Seasonal Variations:</strong> Some equipment (hospital beds) higher demand in winter</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CRITICAL WARNINGS -->
+        <div class="warning-box">
+            <h3>⚠️ КРИТИЧЕСКИ ВАЖНО - MUST READ (Обязательно прочитайте)</h3>
+            <h4 style="margin-top: 15px; margin-bottom: 10px;">What You CANNOT Do:</h4>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li><strong>CANNOT bill Medicare for codes you're not certified for</strong> - This is fraud with severe penalties ($10,000+ per claim + prison time)</li>
+                <li><strong>CANNOT add categories without proper personnel</strong> - BOC will revoke your entire accreditation</li>
+                <li><strong>CANNOT provide equipment without documentation</strong> - Medicare audits are common and ruthless</li>
+                <li><strong>CANNOT skip training</strong> - Improper use of equipment can harm patients and create liability</li>
+                <li><strong>CANNOT ignore state licensing</strong> - Some states require additional licenses (especially oxygen)</li>
+            </ul>
+
+            <h4 style="margin-top: 20px; margin-bottom: 10px;">Red Flags That Trigger Audits:</h4>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li>Billing for categories you're not accredited for</li>
+                <li>Missing documentation (no prescription, no CMN, no delivery proof)</li>
+                <li>Unrealistic billing patterns (too many high-cost items)</li>
+                <li>Patient complaints</li>
+                <li>Equipment returned within 30 days</li>
+            </ul>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="background: #1e3c72; color: white; padding: 40px; text-align: center; border-radius: 10px; margin-top: 40px;">
+            <h2>🚀 Ready to Grow Your Business?</h2>
+            <p style="font-size: 18px; margin: 20px 0;">Start with Phase 1 categories (no personnel needed) THIS WEEK</p>
+            <p style="font-size: 16px; opacity: 0.9;">Then hire Respiratory Therapist within 3 months to unlock the most profitable categories</p>
+            <p style="font-size: 14px; margin-top: 30px; opacity: 0.8;">Document created for: Holistic Medical Supply Inc | BOC #S72641</p>
+            <p style="font-size: 14px; opacity: 0.8;">Date: November 2025</p>
+        </div>
+
+    </div>
+</body>
+</html>
