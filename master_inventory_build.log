@@ -1,0 +1,24 @@
+================================================================================
+MASTER INVENTORY PLAN BUILDER
+================================================================================
+
+Step 1: Loading data sources...
+--------------------------------------------------------------------------------
+Loading approved codes...
+  ✓ Loaded 935 approved HCPCS codes
+  ✓ Unique BOC categories: 44
+Loading Medicare rates...
+  ✓ Loaded 1531 Medicare rate entries
+  ✓ Unique HCPCS codes with rates: 689
+Traceback (most recent call last):
+  File "/home/user/InitialInventoryScratch/build_master_inventory_plan.py", line 53, in <module>
+    all_codes_with_rates = medicare_rates[['HCPCS_Code', 'Rate']].drop_duplicates('HCPCS_Code')
+                           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/pandas/core/frame.py", line 4119, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/pandas/core/indexes/base.py", line 6212, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "/usr/local/lib/python3.11/dist-packages/pandas/core/indexes/base.py", line 6264, in _raise_if_missing
+    raise KeyError(f"{not_found} not in index")
+KeyError: "['Rate'] not in index"
