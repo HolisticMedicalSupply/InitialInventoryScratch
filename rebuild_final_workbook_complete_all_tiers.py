@@ -114,48 +114,55 @@ for idx, row in df.iterrows():
         '',  # Vendor B Name
         '',  # Vendor B Unit Cost (L)
         '',  # Vendor C Name
-        '',  # Vendor C Unit Cost (N)
-        '',  # Best Vendor (O) - FORMULA
-        '',  # Best Unit Cost (P) - FORMULA
-        '',  # Line Total Cost (Q) - FORMULA
-        '',  # Medicare Revenue (R) - FORMULA
-        '',  # Profit Margin % (S) - FORMULA
+        '',  # Vendor C Unit Cost (K)
+        '',  # Best Vendor (L) - FORMULA
+        '',  # Best Unit Cost (M) - FORMULA
+        '',  # Line Total Cost (N) - FORMULA
+        '',  # Medicare Revenue (O) - FORMULA
+        '',  # Profit Margin % (P) - FORMULA
         priority,
         source,
         customer
     ])
 
-    # Add formulas in columns O, P, Q, R, S
-    # O: Best_Vendor = IF(P=J, Vendor_A, IF(P=L, Vendor_B, Vendor_C))
-    ws_main[f'O{row_idx}'] = f'=IF(P{row_idx}=J{row_idx},I{row_idx},IF(P{row_idx}=L{row_idx},K{row_idx},M{row_idx}))'
+    # Add formulas in columns L, M, N, O, P
+    # L: Best_Vendor = IF(M=G, Vendor_A_Name, IF(M=I, Vendor_B_Name, Vendor_C_Name))
+    # If Best Unit Cost (M) equals Vendor A Cost (G), return Vendor A Name (F)
+    # Else if Best Unit Cost equals Vendor B Cost (I), return Vendor B Name (H)
+    # Else return Vendor C Name (J)
+    ws_main[f'L{row_idx}'] = f'=IF(M{row_idx}=G{row_idx},F{row_idx},IF(M{row_idx}=I{row_idx},H{row_idx},J{row_idx}))'
 
-    # P: Best_Unit_Cost = MIN(J, L, N)
-    ws_main[f'P{row_idx}'] = f'=MIN(J{row_idx},L{row_idx},N{row_idx})'
+    # M: Best_Unit_Cost = MIN(Vendor_A_Cost, Vendor_B_Cost, Vendor_C_Cost)
+    # =MIN(G, I, K) where G=Vendor A Cost (col 7), I=Vendor B Cost (col 9), K=Vendor C Cost (col 11)
+    ws_main[f'M{row_idx}'] = f'=MIN(G{row_idx},I{row_idx},K{row_idx})'
 
-    # Q: Line_Total_Cost = Quantity * Best_Unit_Cost
-    ws_main[f'Q{row_idx}'] = f'=G{row_idx}*P{row_idx}'
+    # N: Line_Total_Cost = Quantity * Best_Unit_Cost
+    # =D*M where D=Quantity (col 4), M=Best Unit Cost (col 13)
+    ws_main[f'N{row_idx}'] = f'=D{row_idx}*M{row_idx}'
 
-    # R: Medicare_Revenue = IF(ISBLANK(Medicare_Rate), 0, Quantity * Medicare_Rate)
-    ws_main[f'R{row_idx}'] = f'=IF(ISBLANK(H{row_idx}),0,G{row_idx}*H{row_idx})'
+    # O: Medicare_Revenue = IF(ISBLANK(Medicare_Rate), 0, Quantity * Medicare_Rate)
+    # =IF(ISBLANK(E), 0, D*E) where E=Medicare Allowable Rate (col 5), D=Quantity (col 4)
+    ws_main[f'O{row_idx}'] = f'=IF(ISBLANK(E{row_idx}),0,D{row_idx}*E{row_idx})'
 
-    # S: Profit_Margin_% = IF(Revenue=0, 0, (Revenue - Cost) / Revenue)
-    ws_main[f'S{row_idx}'] = f'=IF(R{row_idx}=0,0,(R{row_idx}-Q{row_idx})/R{row_idx})'
+    # P: Profit_Margin_% = IF(Revenue=0, 0, (Revenue - Cost) / Revenue)
+    # =IF(O=0, 0, (O-N)/O) where O=Medicare Revenue (col 15), N=Line Total Cost (col 14)
+    ws_main[f'P{row_idx}'] = f'=IF(O{row_idx}=0,0,(O{row_idx}-N{row_idx})/O{row_idx})'
 
     row_idx += 1
 
 print(f"  ✓ Added {len(df)} products with formulas")
 
-# Apply conditional formatting to Profit Margin % column (S)
+# Apply conditional formatting to Profit Margin % column (P)
 # Green: >30%, Yellow: 10-30%, Red: <10%
 green_fill = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")
 yellow_fill = PatternFill(start_color="FFEB9C", end_color="FFEB9C", fill_type="solid")
 red_fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")
 
-ws_main.conditional_formatting.add(f'S2:S{row_idx-1}',
+ws_main.conditional_formatting.add(f'P2:P{row_idx-1}',
     CellIsRule(operator='greaterThan', formula=['0.3'], stopIfTrue=True, fill=green_fill))
-ws_main.conditional_formatting.add(f'S2:S{row_idx-1}',
+ws_main.conditional_formatting.add(f'P2:P{row_idx-1}',
     CellIsRule(operator='between', formula=['0.1', '0.3'], stopIfTrue=True, fill=yellow_fill))
-ws_main.conditional_formatting.add(f'S2:S{row_idx-1}',
+ws_main.conditional_formatting.add(f'P2:P{row_idx-1}',
     CellIsRule(operator='lessThan', formula=['0.1'], stopIfTrue=True, fill=red_fill))
 
 print(f"  ✓ Applied conditional formatting")
